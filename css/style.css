@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* .body{
+    background-color: black;
+}
+
+.heading{
+    color: white;
+    text-align: center;
+}
+
+p{
+    color: greenyellow;
+} */
+
+
+/* id selector */
+
+/* #list{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+} */
+
+/* .list-item{
+    color: greenyellow;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+} */
+
+/*  */
+/* div , span{
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: black;
+} */
+
+/* nth-child */
+/* li:nth-child(odd){
+    color: red;
+  
+} */
+
+/* nth-child */
+/* li:nth-child(even){
+    color: yellow;
+  
+} */
+/* Global */
+/* 
+ */
+
+ /* :root */
+/* 
+ :root{
+    --primary-color: red;
+    --secondary-color: green;
+ }
+
+ body{
+    background-color: var(--primary-color);
+ } */
+
+/* padding: 10px 12px; */
+    /* padding: 12px; */
+
+    /* padding-top: ;
+    padding-right: 12px;
+    padding-bottom: 15px;
+    padding-left: 16px; */
+    /* margin: 20px; */
+    /* border: 1px solid black; */
+
+
+
+ /*  */
+
+/*  
+ div {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid black;
+    box-sizing: border-box; /* Default behavior */
+  /* } */
+
+  p{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    line-height: 30px;
+    letter-spacing:0.5;
+    text-align: center;
+    color: darkmagenta;
+    text-transform: lowercase;
+    text-decoration: wavy underline;
+    text-decoration-color: red;
+
+    text-decoration-thickness: 2px;
+  }
