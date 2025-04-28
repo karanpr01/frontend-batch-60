@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positioning in CSS</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 1000vh;
+        width: 100vw;
+        border: 1px solid black;
+        background-color: lightcoral;
+        position: relative;
+      }
+      .box {
+
+        /* by default position  = static*/
+        /* position: static;
+        top: 10px;
+        left: 50px; */
+
+        display: inline-block;
+        height: 150px;
+        width: 150px;
+        background-color: lightseagreen;
+        border: 1px solid black;
+        margin: 10px;
+        font-size: large;
+        font-weight: 600;
+        color: white;
+      }
+
+      #item-1 {
+            display: inline;
+            height: 100px;
+            width: 100px;
+         
+        }
+
+        #item-2 {
+            display: block;
+            height: 100px;
+            width: 100px;
+            background-color: lightblue;
+        }
+
+        #item-3 {
+            visibility: hidden;
+            height: 100px;
+            width: 100px;
+            background-color: lightgreen;
+        };
+
+        
+
+
+ </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" id="item-1">Static</div>
+      <div class="box" id="item-2">Relative</div>
+      <div class="box" id="item-3">Abosolute</div>
+      <div  id="item-4">Fixed</div>
+      <div class="box" id="item-5">Sticky</div>
+    </div>
+   
+  </body>
+</html>
