@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(43, 40, 40);
+    color: yellow;
+}
+
+@media (max-width: 768px) {
+    body{
+        background-color: white;
+        color: black;
+    }
+}
+
+@media (max-width:480px) {
+    body{
+        background-color: brown;
+        color: white;
+    }
+}
