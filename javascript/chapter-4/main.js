@@ -56,12 +56,31 @@
 
 // Write a `while` loop that sums all numbers from 1 to 100 and prints the result.
 
-let i = 1;
-let sum = 0;
-while(i<=100){
-    sum += i;
-    console.log(i)
-    i++
-}
+// let i = 1;
+// let sum = 0;
+// while(i<=100){
+//     sum += i;
+//     console.log(i)
+//     i++
+// }
 
-console.log(sum)
+// console.log(sum)
+
+
+// Write a `for` loop that prints the numbers from 10 down to 1, but **stops early** if the number is divisible by 4 (use `break`).
+let i =100
+do{
+    console.log(i)
+    if(i % 4 === 0){
+        break;
+    }
+i--
+}while(i>=1)
+
+for(let i = 99; i>=1;i--){
+    if(i % 4 === 0){
+        break;
+    }
+
+    console.log(i)
+}
