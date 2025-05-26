@@ -1,0 +1,13 @@
+{
+    "name": "sample",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js ",
+    "count":123,
+    "data":[123,"suraj" , null ],
+    "myAddress":{
+        "city":"chennai",
+        "state":"tamil nadu"
+    }
+   
+}
