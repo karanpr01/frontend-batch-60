@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .red{
+        color: red;
+      }
+      .dark{
+        background-color: black;
+        color: white;
+      }
+
+      .border{
+       border: 1px solid black;
+       padding: 12px; 
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="heading" class="header">Welcome <span style="display: none;">Suraj</span> </h1>
+    <h2 id="heading2" class="header">Hello world</h2>
+    <p class="para">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse suscipit
+      ullam perferendis dolores asperiores possimus quaerat voluptatem rem
+      itaque officia laborum exercitationem, dolorem provident recusandae quidem
+      quos deserunt veritatis labore dolor sint vero aliquid.
+    </p>
+
+    <p>
+      Hello Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
+      totam. Obcaecati porro ab reprehenderit, harum consequuntur numquam
+      quaerat! Nostrum quae vel eum eius possimus fugiat magnam, dolore omnis
+      modi. Qui assumenda at blanditiis atque.
+    </p>
+
+    <button>
+      Click
+
+    </button>
+    <script>
+      const body = document.querySelector("body");
+      const btn = document.querySelector("button");
+      console.log(body);
+
+      btn.addEventListener("click" , ()=>{
+        body.classList.toggle("dark");
+       
+      })
+    </script>
+  </body>
+</html>
