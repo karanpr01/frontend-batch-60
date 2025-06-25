@@ -105,3 +105,12 @@
 
 // const set = new Set([1, 2, 2, 3]);
 // console.log(set); // Set {1, 2, 3}
+
+
+
+// * Difference between Shallow copy and Deep copy
+// Shallow copy means copying an object or array only from the top level.
+// If it contains nested objects or arrays, they are not copied independently — instead, the copy still refers to the same nested data as the original.
+
+// Deep copy means creating a completely independent copy of the entire object or array, including all nested objects and arrays.
+// Changes made in the copied version do not affect the original.
