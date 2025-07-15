@@ -13,27 +13,46 @@ function App() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!username.trim()) {
+      toast.error("Please enter a username");
+      return;
+    }
+
     try {
       setIsPending(true);
       const res = await fetch(`https://api.github.com/search/users?q=${username}`);
+
+      if (!res.ok) {
+        if (res.status === 403) {
+          throw new Error("API rate limit exceeded. Try again later.");
+        } else {
+          throw new Error(`GitHub error: ${res.status}`);
+        }
+      }
+
       const data = await res.json();
 
-      const userDetails = await Promise.all(
-        data.items.map(async (user) => {
-          const res = await fetch(user.url); // fetches full user info
-          return await res.json();
-        })
-      );
-      setData(userDetails);
-      toast.success("User found");
+      if (!data.items || data.items.length === 0) {
+        setData(null);
+        toast.error("No user found");
+        return;
+      }
+
+      setData(data.items);
+      toast.success("User(s) found");
     } catch (error) {
-      toast.error("User not found");
+      if (error.name === "TypeError") {
+        toast.error("Network error. Please check your connection.");
+      } else {
+        toast.error(error.message || "Something went wrong");
+      }
     } finally {
       setIsPending(false);
     }
   };
 
-  // console.log(data);
+
+  console.log(data);
 
 
 
@@ -50,7 +69,7 @@ function App() {
     document.documentElement.classList.toggle('dark', newTheme);
   }
   return (
-    <div className='  dark:bg-zinc-900  dark:text-white transition-all duration-300 '>
+    <div className='  dark:bg-zinc-900  dark:text-white transition-all duration-300 px-5 py-2'>
       <Toaster />
       <div className=' h-full w-full flex justify-center items-center p-5 gap-10'>
         <h1 className='text-center text-4xl  text-yellow-500 font-bold h-full w-full '>Github Profile Finder🔥</h1>
@@ -86,7 +105,7 @@ function App() {
       </div>
       {isPending && (
         <div className="flex flex-row gap-3 justify-center items-center py-24 w-full">
-          <BeatLoader color="white" size={10} />
+          <BeatLoader color="blue" size={10} />
         </div>
       )}
 
@@ -97,8 +116,7 @@ function App() {
           description={"Please enter a valid username"}
         />
       ) : (
-        <div className='grid
-     grid-cols-3 gap-3 m-10 '>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-3 m-10 '>
           {
             data.map((data, index) => (
               <UserCard
