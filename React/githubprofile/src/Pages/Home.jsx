@@ -13,6 +13,7 @@ function App() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
     if (!username.trim()) {
       toast.error("Please enter a username");
       return;
@@ -20,39 +21,57 @@ function App() {
 
     try {
       setIsPending(true);
+      setData(null);
+
       const res = await fetch(`https://api.github.com/search/users?q=${username}`);
 
       if (!res.ok) {
         if (res.status === 403) {
-          throw new Error("API rate limit exceeded. Try again later.");
+          toast.error("API rate limit exceeded. Try again later.");
         } else {
-          throw new Error(`GitHub error: ${res.status}`);
+          toast.error("Something went wrong. Try again later.");
         }
+        return;
       }
 
-      const data = await res.json();
+      const result = await res.json();
 
-      if (!data.items || data.items.length === 0) {
-        setData(null);
+      if (!result.items || result.items.length === 0) {
         toast.error("No user found");
         return;
       }
 
-      setData(data.items);
-      toast.success("User(s) found");
+      // Fetch full user details
+      const fullUsers = await Promise.all(
+        result.items.map(async (user) => {
+          const userRes = await fetch(`https://api.github.com/users/${user.login}`);
+          if (!userRes.ok) {
+            throw new Error("Failed to fetch full user details");
+          }
+          return await userRes.json();
+        })
+      );
+
+      setData(fullUsers);
+      toast.success("Users loaded successfully");
+
     } catch (error) {
-      if (error.name === "TypeError") {
+      console.error("Fetch error:", error);
+
+      if (error.message === "Failed to fetch") {
         toast.error("Network error. Please check your connection.");
       } else {
-        toast.error(error.message || "Something went wrong");
+        toast.error("Unexpected error. Please try again.");
       }
+
     } finally {
       setIsPending(false);
     }
   };
 
 
-  console.log(data);
+
+  // console.log(data);
 
 
 
@@ -122,8 +141,8 @@ function App() {
               <UserCard
                 key={index}
                 imgUrl={data.avatar_url}
-                name={data.name}
-                loginid={data.login}
+                name={data.name || "No name Available"}
+                loginid={data.login }
                 bio={data.bio || "No bio Available"}
                 followers={data.followers}
                 following={data.following}
